@@ -1,6 +1,5 @@
 import { Syne } from "next/font/google";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { SignOutButton } from "@/components/sign-out-button";
@@ -9,7 +8,7 @@ const syne = Syne({ subsets: ["latin"], weight: "800" });
 
 export default function Home() {
   return (
-    <main className="grid h-screen place-items-center">
+    <main className="grid h-[80vh] place-items-center">
       <div className="flex flex-col items-center space-y-4">
         <h1 className="text-5xl md:text-7xl transition-all text-primary-foreground h-1/5">
           <div className={syne.className}>STOCKA</div>
@@ -19,7 +18,6 @@ export default function Home() {
             <Button>
               <Link href="/sign-up">Sign up</Link>
             </Button>
-            <Separator orientation="vertical" />
             <Button variant="outline">
               <Link href="/sign-in">Login</Link>
             </Button>
