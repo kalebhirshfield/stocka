@@ -3,14 +3,11 @@
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
-import { Button } from "./ui/button";
 import { SignOutButton } from "./sign-out-button";
 import { MenuIcon } from "lucide-react";
 

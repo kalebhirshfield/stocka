@@ -9,7 +9,7 @@ export const SignOutButton = () => {
 
   return (
     <Button variant="outline" onClick={() => signOut({ redirectUrl: "/" })}>
-      <LogOutIcon className="" />
+      <LogOutIcon color="#facc15" />
     </Button>
   );
 };
