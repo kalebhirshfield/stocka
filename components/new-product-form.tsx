@@ -27,6 +27,7 @@ export function NewProductForm() {
       console.error("Error inserting item details:", await response.json());
     } else {
       console.log("Inserted data:", await response.json());
+      window.location.reload();
     }
   };
 
