@@ -79,8 +79,12 @@ export function NewProductForm() {
         </div>
       </div>
       <div className="grid w-full items-center pt-4">
-        <Button type="submit" variant="outline">
-          <PlusIcon />
+        <Button
+          type="submit"
+          variant="outline"
+          className="bg-gradient-to-bl from-primary to-yellow-600 hover:bg-gradient-to-br"
+        >
+          <PlusIcon color="white" />
         </Button>
       </div>
     </form>
