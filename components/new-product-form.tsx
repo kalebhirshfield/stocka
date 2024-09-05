@@ -85,7 +85,7 @@ export function NewProductForm() {
           variant="outline"
           className="bg-gradient-to-bl from-primary to-yellow-600 hover:bg-gradient-to-br"
         >
-          <PlusIcon color="white" />
+          <PlusIcon className="stroke-background" />
         </Button>
       </div>
     </form>

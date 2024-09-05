@@ -1,9 +1,13 @@
-import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { createClerkSupabaseClientSsr } from "@/utils/supabase/client";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Edit2 } from "lucide-react";
 import { Trash2 } from "lucide-react";
 import { CheckCircle2 } from "lucide-react";
 import { XCircle } from "lucide-react";
@@ -96,26 +100,22 @@ export default async function Home() {
                         <XCircle color="#ef4444" />
                       )}
                     </div>
-                    <Button
-                      variant="outline"
-                      className="bg-gradient-to-bl from-primary to-yellow-600 hover:bg-gradient-to-br"
-                    >
-                      <Edit2 color="white" />
-                    </Button>
-                    <AlertDialog>
-                      <AlertDialogTrigger>
-                        <Card className="bg-gradient-to-bl from-destructive to-red-700 hover:bg-gradient-to-br w-full h-10 rounded-md flex flex-col justify-center">
-                          <div className="flex flex-row justify-center">
-                            <Trash2 color="white" />
-                          </div>
-                        </Card>
-                      </AlertDialogTrigger>
-                      <AlertDialogContent>
-                        <DeleteProductForm id={item.item_id} />
-                      </AlertDialogContent>
-                    </AlertDialog>
                   </div>
                 </CardContent>
+                <CardFooter>
+                  <AlertDialog>
+                    <AlertDialogTrigger className="w-full">
+                      <Card className="bg-gradient-to-bl from-destructive to-red-700 hover:bg-gradient-to-br h-10 rounded-md flex flex-col justify-center">
+                        <div className="flex flex-row justify-center">
+                          <Trash2 className="stroke-background" />
+                        </div>
+                      </Card>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <DeleteProductForm id={item.item_id} />
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </CardFooter>
               </Card>
             ))
           ) : (
