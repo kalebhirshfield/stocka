@@ -107,8 +107,7 @@ export default async function Home() {
                       <AlertDialogTrigger>
                         <Button
                           variant="outline"
-                          className="bg-gradient-to-bl from-destructive to-red-700 hover:bg-gradient-to-br w-fullThis action cannot be undone. This will permanently delete your account
-        and remove your data from our servers."
+                          className="bg-gradient-to-bl from-destructive to-red-700 hover:bg-gradient-to-br w-full"
                         >
                           <Trash2 color="white" />
                         </Button>
