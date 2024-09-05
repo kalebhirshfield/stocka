@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { NewProductCard } from "@/components/new-product-card";
 import { createClerkSupabaseClientSsr } from "@/utils/supabase/client";
 import {
   Card,
@@ -26,6 +25,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { DeleteProductForm } from "@/components/delete-product-form";
+import { NewProductForm } from "@/components/new-product-form";
 
 async function fetchItems() {
   const supabase = createClerkSupabaseClientSsr();
@@ -60,7 +60,14 @@ export default async function Home() {
       </SignedOut>
       <SignedIn>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pt-10">
-          <NewProductCard />
+          <Card>
+            <CardHeader className="flex flex-row justify-between">
+              <CardTitle className="text-4xl font-bold">New Product</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <NewProductForm />
+            </CardContent>
+          </Card>
           {items ? (
             items.map((item) => (
               <Card key={item.item_id}>
