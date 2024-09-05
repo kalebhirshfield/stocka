@@ -14,6 +14,8 @@ import { UserButton } from "@clerk/nextjs";
 import { Edit2 } from "lucide-react";
 import { Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CheckCircle2 } from "lucide-react";
+import { XCircle } from "lucide-react";
 
 async function fetchItems() {
   const supabase = createClerkSupabaseClientSsr();
@@ -54,7 +56,7 @@ export default async function Page() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid w-full items-center gap-4">
+                  <div className="grid grid-cols-2 w-full items-center gap-4">
                     <div className="flex flex-col space-y-1.5">
                       <Label htmlFor="cost">Item cost</Label>
                       <p className="text-2xl font-bold text-muted-foreground">
@@ -73,14 +75,12 @@ export default async function Page() {
                         {item.quantity}
                       </p>
                     </div>
-                    <div className="text-2xl font-semibold">
+                    <div className="flex flex-col space-y-1.5">
+                      <Label htmlFor="profit">Profit</Label>
                       {item.buy_price > item.item_cost ? (
-                        <p>
-                          Currently making a{" "}
-                          <span className="text-primary">profit</span>! 🎉
-                        </p>
+                        <CheckCircle2 color="green" />
                       ) : (
-                        <p>Not yet making a profit.</p>
+                        <XCircle color="red" />
                       )}
                     </div>
                     <Button variant="outline">

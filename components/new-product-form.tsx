@@ -32,7 +32,7 @@ export function NewProductForm() {
 
   return (
     <form onSubmit={handleAddItem}>
-      <div className="grid w-full items-center gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center gap-4">
         <div className="flex flex-col space-y-1.5">
           <Label htmlFor="name">Name</Label>
           <Input
@@ -77,6 +77,8 @@ export function NewProductForm() {
             required
           />
         </div>
+      </div>
+      <div className="grid w-full items-center pt-4">
         <Button type="submit" variant="outline">
           <PlusIcon />
         </Button>
