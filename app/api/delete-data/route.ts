@@ -9,7 +9,7 @@ export async function DELETE(req: NextRequest) {
     const { data, error } = await supabase
       .from("item_details")
       .delete()
-      .eq("id", id)
+      .eq("item_id", id)
       .select();
 
     if (error) {

@@ -1,14 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { createClerkSupabaseClientSsr } from "@/utils/supabase/client";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Edit2 } from "lucide-react";
 import { Trash2 } from "lucide-react";
@@ -18,10 +11,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 import {
   AlertDialog,
   AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { DeleteProductForm } from "@/components/delete-product-form";
@@ -115,15 +104,14 @@ export default async function Home() {
                     </Button>
                     <AlertDialog>
                       <AlertDialogTrigger>
-                        <Button
-                          variant="outline"
-                          className="bg-gradient-to-bl from-destructive to-red-700 hover:bg-gradient-to-br w-full"
-                        >
-                          <Trash2 color="white" />
-                        </Button>
+                        <Card className="bg-gradient-to-bl from-destructive to-red-700 hover:bg-gradient-to-br w-full h-10 rounded-md flex flex-col justify-center">
+                          <div className="flex flex-row justify-center">
+                            <Trash2 color="white" />
+                          </div>
+                        </Card>
                       </AlertDialogTrigger>
                       <AlertDialogContent>
-                        <DeleteProductForm />
+                        <DeleteProductForm id={item.item_id} />
                       </AlertDialogContent>
                     </AlertDialog>
                   </div>
