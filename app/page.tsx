@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { DeleteProductForm } from "@/components/delete-product-form";
 import { NewProductForm } from "@/components/new-product-form";
+import { Separator } from "@/components/ui/separator";
 
 async function fetchItems() {
   const supabase = createClerkSupabaseClientSsr();
@@ -64,6 +65,7 @@ export default async function Home() {
             <CardHeader className="flex flex-row justify-between">
               <CardTitle className="text-4xl font-bold">New Product</CardTitle>
             </CardHeader>
+            <Separator className="mb-5" />
             <CardContent>
               <NewProductForm />
             </CardContent>
@@ -76,6 +78,7 @@ export default async function Home() {
                     {item.item_name}
                   </CardTitle>
                 </CardHeader>
+                <Separator className="mb-5" />
                 <CardContent>
                   <div className="grid grid-cols-2 w-full items-center gap-4">
                     <div className="flex flex-col space-y-1.5">
@@ -120,16 +123,7 @@ export default async function Home() {
                         </Button>
                       </AlertDialogTrigger>
                       <AlertDialogContent>
-                        <AlertDialogHeader>
-                          <AlertDialogTitle>Warning</AlertDialogTitle>
-                          <AlertDialogDescription>
-                            This action cannot be undone. This will permanently
-                            delete your item from our database.
-                          </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                          <DeleteProductForm />
-                        </AlertDialogFooter>
+                        <DeleteProductForm />
                       </AlertDialogContent>
                     </AlertDialog>
                   </div>

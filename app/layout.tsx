@@ -14,6 +14,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Separator } from "@/components/ui/separator";
+import { Input } from "@/components/ui/input";
 
 const karla = Karla({ subsets: ["latin"] });
 const syne = Syne({ subsets: ["latin"], weight: "800" });
@@ -32,8 +34,8 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={karla.className}>
-          <div className="p-5">
-            <div className="flex flex-row">
+          <div className="w-full bg-white fixed drop-shadow-md">
+            <div className="flex flex-row p-5">
               <div className="flex flex-col justify-center">
                 <SignedOut>
                   <Popover>
@@ -60,12 +62,19 @@ export default function RootLayout({
                   <UserButton />
                 </SignedIn>
               </div>
-              <h1 className="text-primary text-4xl pl-5">
+              <h1 className="text-primary text-4xl pl-5 hidden md:block">
                 <div className={syne.className}>STOCKA</div>
               </h1>
+              <SignedOut>
+                <Skeleton className="h-10 w-full ml-5" />
+              </SignedOut>
+              <SignedIn>
+                <Input type="search" placeholder="Search" className="ml-5" />
+              </SignedIn>
             </div>
-            {children}
+            <Separator />
           </div>
+          <div className="p-5 pt-16">{children}</div>
         </body>
       </html>
     </ClerkProvider>
