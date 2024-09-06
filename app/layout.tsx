@@ -49,10 +49,15 @@ export default function RootLayout({
                           </div>
                         </Skeleton>
                       </PopoverTrigger>
-                      <PopoverContent>
+                      <PopoverContent className="w-fit ml-5">
                         <div className="flex justify-between space-x-4">
                           <Link href="/sign-up">
-                            <Button>Sign up</Button>
+                            <Button
+                              variant="outline"
+                              className="bg-gradient-to-bl from-primary to-yellow-600 hover:bg-gradient-to-br text-background"
+                            >
+                              Sign up
+                            </Button>
                           </Link>
                           <Link href="/sign-in">
                             <Button variant="outline">Login</Button>
