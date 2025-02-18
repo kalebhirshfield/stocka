@@ -40,7 +40,7 @@ export default async function Home() {
   return (
     <main>
       <SignedOut>
-        <div className="w-full h-[90dvh] pt-10 flex text-left justify-center items-center">
+        <div className="w-full h-[80lvh] pt-10 flex text-center justify-center items-center sm:text-lg md:text-xl lg:text-4xl transition-all">
           <div className={syne.className}>
             <h1 className="text-primary text-4xl block md:hidden">STOCKA</h1>
             <div>TRACK WHAT YOU OWN</div>

@@ -33,7 +33,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={karla.className}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="w-full h-[10dvh] bg-background fixed drop-shadow-md">
+            <div className="w-full bg-background fixed drop-shadow-md">
               <div className="flex flex-row p-5 justify-between">
                 <div className="flex flex-col justify-center">
                   <SignedOut>
@@ -53,7 +53,9 @@ export default function RootLayout({
                   </SignedIn>
                 </div>
                 <h1 className="text-primary text-4xl hidden md:block">
-                  <div className={syne.className}>STOCKA</div>
+                  <Link href="/" className={syne.className}>
+                    STOCKA
+                  </Link>
                 </h1>
                 <SignedIn>
                   <Input type="search" placeholder="Search" className="mx-5" />
