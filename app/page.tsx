@@ -8,10 +8,8 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Trash2 } from "lucide-react";
-import { CheckCircle2 } from "lucide-react";
-import { XCircle } from "lucide-react";
-import { Skeleton } from "@/components/ui/skeleton";
+import { XCircle, CheckCircle2, Trash2 } from "lucide-react";
+import Link from "next/link";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -20,6 +18,7 @@ import {
 import { DeleteProductForm } from "@/components/delete-product-form";
 import { NewProductForm } from "@/components/new-product-form";
 import { Separator } from "@/components/ui/separator";
+import { syne } from "./layout";
 
 async function fetchItems() {
   const supabase = createClerkSupabaseClientSsr();
@@ -41,15 +40,17 @@ export default async function Home() {
   return (
     <main>
       <SignedOut>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pt-10">
-          <Skeleton className="h-[300px] rounded-xl" />
-          <Skeleton className="h-[300px] rounded-xl" />
-          <Skeleton className="h-[300px] rounded-xl" />
-          <Skeleton className="h-[300px] rounded-xl" />
-          <Skeleton className="h-[300px] rounded-xl" />
-          <Skeleton className="h-[300px] rounded-xl" />
-          <Skeleton className="h-[300px] rounded-xl" />
-          <Skeleton className="h-[300px] rounded-xl" />
+        <div className="w-full h-[90dvh] pt-10 flex text-left justify-center items-center">
+          <div className={syne.className}>
+            <h1 className="text-primary text-4xl block md:hidden">STOCKA</h1>
+            <div>TRACK WHAT YOU OWN</div>
+            <div>MAKE A PROFIT</div>
+            <Link href="/sign-up">
+              <div className="underline hover:text-primary cursor-pointer">
+                Join now
+              </div>
+            </Link>
+          </div>
         </div>
       </SignedOut>
       <SignedIn>
