@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { dark } from "@clerk/themes";
+import { Search } from "lucide-react";
 
 const karla = Karla({ subsets: ["latin"] });
 export const syne = Syne({ subsets: ["latin"], weight: "800" });
@@ -34,7 +35,7 @@ export default function RootLayout({
         <body className={karla.className}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="w-full bg-background fixed drop-shadow-md">
-              <div className="flex flex-row p-5 justify-between">
+              <div className="flex flex-row p-5 justify-between items-center">
                 <div className="flex flex-col justify-center">
                   <SignedOut>
                     <Link href="/sign-in">
@@ -58,9 +59,28 @@ export default function RootLayout({
                   </Link>
                 </h1>
                 <SignedIn>
-                  <Input type="search" placeholder="Search" className="mx-5" />
+                  <form
+                    action="/"
+                    method="get"
+                    className="flex-grow flex flex-row mx-5 items-center"
+                  >
+                    <Button
+                      type="submit"
+                      size="icon"
+                      variant="outline"
+                      className="mr-5 bg-gradient-to-bl from-primary to-yellow-600 hover:bg-gradient-to-br flex-shrink-0"
+                    >
+                      <Search className="stroke-background" />
+                    </Button>
+                    <Input
+                      type="text"
+                      name="search"
+                      placeholder="Search items..."
+                      className="flex-grow"
+                    />
+                  </form>
                 </SignedIn>
-                <div>
+                <div className="flex flex-col justify-center">
                   <ModeToggle />
                 </div>
               </div>

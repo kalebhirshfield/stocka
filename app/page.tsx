@@ -19,13 +19,17 @@ import { DeleteProductForm } from "@/components/delete-product-form";
 import { NewProductForm } from "@/components/new-product-form";
 import { Separator } from "@/components/ui/separator";
 import { syne } from "./layout";
+import { useSearchParams } from "next/navigation";
 
-async function fetchItems() {
+async function fetchItems(searchQuery: string) {
   const supabase = createClerkSupabaseClientSsr();
 
-  const { data: item_details, error } = await supabase
-    .from("item_details")
-    .select();
+  let query = supabase.from("item_details").select();
+  if (searchQuery) {
+    query = query.ilike("item_name", `%${searchQuery}%`);
+  }
+
+  const { data: item_details, error } = await query;
   if (error) {
     console.error("Error fetching item details:", error);
   }
@@ -34,8 +38,13 @@ async function fetchItems() {
   return item_details;
 }
 
-export default async function Home() {
-  let items = await fetchItems();
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { search: string };
+}) {
+  const searchQuery = searchParams.search || "";
+  let items = await fetchItems(searchQuery);
 
   return (
     <main>
