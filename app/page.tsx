@@ -19,7 +19,6 @@ import { DeleteProductForm } from "@/components/delete-product-form";
 import { NewProductForm } from "@/components/new-product-form";
 import { Separator } from "@/components/ui/separator";
 import { syne } from "./layout";
-import { useSearchParams } from "next/navigation";
 
 async function fetchItems(searchQuery: string) {
   const supabase = createClerkSupabaseClientSsr();
