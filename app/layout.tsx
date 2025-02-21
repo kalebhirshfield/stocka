@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { dark } from "@clerk/themes";
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 
 const karla = Karla({ subsets: ["latin"] });
 export const syne = Syne({ subsets: ["latin"], weight: "800" });
@@ -78,6 +78,15 @@ export default function RootLayout({
                       placeholder="Search items..."
                       className="flex-grow"
                     />
+                    <Button
+                      type="submit"
+                      size="icon"
+                      variant="outline"
+                      className="ml-5 bg-gradient-to-bl from-primary to-yellow-600 hover:bg-gradient-to-br flex-shrink-0"
+                      formAction="/"
+                    >
+                      <X className="stroke-background" />
+                    </Button>
                   </form>
                 </SignedIn>
                 <div className="flex flex-col justify-center">
