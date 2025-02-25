@@ -34,7 +34,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={karla.className}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="w-full bg-background fixed drop-shadow-md">
+            <div className="w-full fixed drop-shadow-md bg-background/70 backdrop-blur-lg">
               <div className="flex flex-row p-5 justify-between items-center">
                 <div className="flex flex-col justify-center">
                   <SignedOut>
@@ -95,7 +95,21 @@ export default function RootLayout({
               </div>
               <Separator />
             </div>
-            <div className="p-5 pt-16">{children}</div>
+            <div className="flex flex-col min-h-screen pt-16">
+              <main className="flex-grow p-5 pb-20">{children}</main>
+            </div>
+            <footer className="fixed bottom-0 left-0 w-full text-center bg-background/70 backdrop-blur-lg">
+              <Separator />
+              <p className="p-5">
+                Created by{" "}
+                <Link
+                  href="kalebhirshfield.com"
+                  className="underline hover:text-primary cursor-pointer"
+                >
+                  Kaleb Hirshfield
+                </Link>
+              </p>
+            </footer>
           </ThemeProvider>
         </body>
       </html>
