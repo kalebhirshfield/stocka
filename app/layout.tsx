@@ -103,7 +103,7 @@ export default function RootLayout({
               <p className="p-5">
                 Created by{" "}
                 <Link
-                  href="kalebhirshfield.com"
+                  href="https://kalebhirshfield.com/"
                   className="underline hover:text-primary cursor-pointer"
                 >
                   Kaleb Hirshfield
