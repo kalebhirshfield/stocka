@@ -1,12 +1,13 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { createClerkSupabaseClientSsr } from "@/utils/supabase/client";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -16,14 +17,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import {
-  XCircle,
-  CheckCircle2,
-  Trash2,
-  Menu,
-  Edit2,
-  PlusIcon,
-} from "lucide-react";
+import { XCircle, CheckCircle2, Trash2, Edit2, PlusIcon } from "lucide-react";
 import Link from "next/link";
 import {
   AlertDialog,
@@ -32,6 +26,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { DeleteProductForm } from "@/components/delete-product-form";
 import { NewProductForm } from "@/components/new-product-form";
+import { EditProductForm } from "@/components/edit-product-form";
 import { Separator } from "@/components/ui/separator";
 import { syne } from "./layout";
 
@@ -87,48 +82,24 @@ export default async function Home({
               >
                 <PlusIcon className="stroke-background size-1/4" />
               </Button>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>New Product</DialogTitle>
-                  <DialogDescription>
-                    Enter all the details of your item(s).
-                  </DialogDescription>
-                </DialogHeader>
-                <NewProductForm />
-              </DialogContent>
             </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>New Product</DialogTitle>
+                <DialogDescription>
+                  Enter all the details of your item(s).
+                </DialogDescription>
+              </DialogHeader>
+              <NewProductForm />
+            </DialogContent>
           </Dialog>
           {items ? (
             items.map((item) => (
               <Card key={item.item_id}>
-                <CardHeader className="flex flex-row justify-between">
+                <CardHeader className="flex flex-row">
                   <CardTitle className="text-4xl font-bold whitespace-nowrap overflow-hidden text-ellipsis">
                     {item.item_name}
                   </CardTitle>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger>
-                      <Button variant="outline">
-                        <Menu />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="flex flex-col space-y-1">
-                      <Button className="w-full">
-                        <Edit2 />
-                      </Button>
-                      <AlertDialog>
-                        <AlertDialogTrigger className="w-full">
-                          <Card className="bg-gradient-to-bl from-destructive to-red-700 hover:bg-gradient-to-br h-10 rounded-md flex flex-col justify-center">
-                            <div className="flex flex-row justify-center">
-                              <Trash2 className="stroke-background" />
-                            </div>
-                          </Card>
-                        </AlertDialogTrigger>
-                        <AlertDialogContent>
-                          <DeleteProductForm id={item.item_id} />
-                        </AlertDialogContent>
-                      </AlertDialog>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
                 </CardHeader>
                 <Separator className="mb-5" />
                 <CardContent>
@@ -161,6 +132,45 @@ export default async function Home({
                     </div>
                   </div>
                 </CardContent>
+                <Separator className="mb-5" />
+                <CardFooter className="space-x-3">
+                  <Dialog>
+                    <DialogTrigger>
+                      <Button className="w-full">
+                        <Edit2 />
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Edit Product</DialogTitle>
+                        <DialogDescription>
+                          Enter all the details of your item(s).
+                        </DialogDescription>
+                      </DialogHeader>
+                      <EditProductForm
+                        initialData={{
+                          id: item.item_id,
+                          name: item.item_name,
+                          cost: item.item_cost,
+                          price: item.buy_price,
+                          quantity: item.quantity,
+                        }}
+                      />
+                    </DialogContent>
+                  </Dialog>
+                  <AlertDialog>
+                    <AlertDialogTrigger className="w-full">
+                      <Card className="bg-gradient-to-bl from-destructive to-red-700 hover:bg-gradient-to-br h-10 rounded-md flex flex-col justify-center">
+                        <div className="flex flex-row justify-center">
+                          <Trash2 className="stroke-background" />
+                        </div>
+                      </Card>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <DeleteProductForm id={item.item_id} />
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </CardFooter>
               </Card>
             ))
           ) : (
