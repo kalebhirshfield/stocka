@@ -9,7 +9,6 @@
 <p align="center">
   <a href="#stack">Stack</a> •
   <a href="#summary">Summary</a> •
-  <a href="#license">License</a>
 </p>
 
 ## Stack
